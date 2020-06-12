@@ -1,0 +1,17 @@
+{
+    "name": "app/blog",
+    "type": "project",
+    "description": "Blog project",
+    "authors": [
+        {
+            "name": "Patryk Rutkowski",
+            "email": "patrynio0147@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Blog\\": "src/"
+        }
+    },
+    "require": {}
+}

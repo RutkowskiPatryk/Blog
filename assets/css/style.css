@@ -1,0 +1,11 @@
+.container {
+    margin-top: 3%;
+}
+
+.btn-group a {
+    margin-right: 3%;
+}
+
+a:hover {
+    text-decoration: none;
+}
