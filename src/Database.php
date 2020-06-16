@@ -6,11 +6,18 @@ require_once 'config.php';
 
 class Database {
 
-    private $host = DB_HOST;
-    private $user = DB_USER;
-    private $password = DB_PASSWORD;
-    private $dbname = DB_NAME;
+    private $host;
+    private $user;
+    private $password;
+    private $dbname;
     private $dbh;
+    
+    public function __construct() {
+        $this->host = DB_HOST;
+        $this->user = DB_USER;
+        $this->password = DB_PASSWORD;
+        $this->dbname = DB_NAME;
+    }
 
     public function getConnection() {
         try {
