@@ -17,9 +17,10 @@ class User {
     public function registerUser(string $second_password) : bool {
         if(User::checkArguments() && User::comparePasswords($second_password) == 0) {
             if(User::isEmailFree() == 0) {
+                removeTags();
                 $sth = $this->pdo->prepare('INSERT INTO users (email,password) VALUES (:email, :password)');
-                @$sth->bindParam(':email', strip_tags($this->email), \PDO::PARAM_STR);
-                @$sth->bindParam(':password', strip_tags($this->password), \PDO::PARAM_STR);
+                $sth->bindParam(':email', $this->email, \PDO::PARAM_STR);
+                $sth->bindParam(':password', $this->password, \PDO::PARAM_STR);
                 return $sth->execute();
 
             } else {
@@ -74,6 +75,11 @@ class User {
 
     private function comparePasswords(string $password) : bool {
         return strcmp($this->password, $password);
+    }
+    
+    private function removeTags() : void {
+        $this->email = strip_tags($this->email);
+        $this->password = strip_tags($this->password);
     }
 
     public function getEmail() : string {
